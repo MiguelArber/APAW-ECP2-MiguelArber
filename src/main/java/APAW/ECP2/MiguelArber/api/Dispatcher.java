@@ -23,6 +23,15 @@ public class Dispatcher {
     }
 
     public void doPost(HttpRequest request, HttpResponse response) {
+    	
+    	 try {
+             if (request.isEqualsPath(ShoppingCartResource.SHOPPING_CART)) {
+                 shoppingCartResource.createShoppingCart(request.getBody());
+                 response.setStatus(HttpStatus.CREATED);
+             }
+    	 } catch (Exception e) {
+             responseError(response, e);
+         }
     		
     }
 

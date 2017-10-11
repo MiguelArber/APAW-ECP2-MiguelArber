@@ -18,5 +18,8 @@ public class ArticleControllerIT {
         articleController = new ArticleController();
     }
 
-
+    @Test
+    public void test() {
+    	
+    }
 }

@@ -24,9 +24,14 @@ public class ArticleResourceFunctionalTesting {
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
-    @Before
+   @Before
     public void before() {
         DaoFactory.setFactory(new DaoMemoryFactory());
         request = new HttpRequest();
     }
+   
+   @Test
+   public void test() {
+	   
+   }
 }
