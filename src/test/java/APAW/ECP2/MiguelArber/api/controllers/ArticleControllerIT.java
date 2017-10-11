@@ -19,7 +19,9 @@ public class ArticleControllerIT {
     }
 
     @Test
-    public void test() {
-    	
+    public void testCreateAndArticleList() {
+    	articleController.createArticle("article");
+        assertEquals("aricle", articleController.articleList().get(0).getReference());
     }
+    
 }

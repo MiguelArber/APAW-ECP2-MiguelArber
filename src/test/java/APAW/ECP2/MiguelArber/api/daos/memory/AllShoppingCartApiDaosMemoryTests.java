@@ -6,8 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-    ShoppingCartDaoMemoryTest.class,
-    ArticleDaoMemoryTest.class
+    ShoppingCartDaoMemoryTest.class
 })
 public class AllShoppingCartApiDaosMemoryTests {
 
