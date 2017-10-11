@@ -12,6 +12,7 @@ import APAW.ECP2.MiguelArber.api.resources.exceptions.ShoppingCartFieldInvalidEx
 public class ArticleResource {
 	
 	 public static final String ARTICLES = "articles";
+	 public static final String ID = "/{id}";
 
 	    public void createArticle(String articleName) throws ArticleFieldInvalidException {
 	        this.validateField(articleName);
