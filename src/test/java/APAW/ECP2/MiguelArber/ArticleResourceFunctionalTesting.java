@@ -60,4 +60,22 @@ public class ArticleResourceFunctionalTesting {
        new HttpClientService().httpRequest(request);
    }
    
+   @Test
+   public void testReadArticle() {
+       this.createArticles();
+       HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(ArticleResource.ARTICLES).path(ArticleResource.ID)
+               .expandPath("1").build();
+       assertEquals("{\"id\":1,\"name\":\"article\"}", new HttpClientService().httpRequest(request).getBody());
+
+   }
+   
+   @Test(expected = HttpException.class)
+   public void testReadShoppingCartNonExistingID() {
+	   this.createArticles();
+       HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(ArticleResource.ARTICLES).path(ArticleResource.ID)
+               .expandPath("100").build();
+       new HttpClientService().httpRequest(request);
+
+   }
+   
 }

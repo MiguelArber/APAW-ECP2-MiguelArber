@@ -24,6 +24,8 @@ public class Dispatcher {
             if (request.isEqualsPath(ShoppingCartResource.SHOPPING_CART + ShoppingCartResource.ID)) {
             	/*response.setBody("{\"id\":1,\"name\":\"cart\"}"); for testing purposes*/
                 response.setBody(shoppingCartResource.readShoppingCart(Integer.valueOf(request.paths()[1])).toString());
+            } else if (request.isEqualsPath(ArticleResource.ARTICLES + ArticleResource.ID)) {
+            	response.setBody(articleResource.readArticle(Integer.valueOf(request.paths()[1])).toString());
             }
     	} catch (Exception e) {
             responseError(response, e);
