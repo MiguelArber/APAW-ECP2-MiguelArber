@@ -14,5 +14,10 @@ public class ArticleDaoMemoryTest {
     private ShoppingCart shoppingCart;
 
     private Article article;
+    
+    @Test
+    public void test() {
+    	
+    }
 
 }
