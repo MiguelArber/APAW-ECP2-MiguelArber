@@ -28,5 +28,4 @@ public class ShoppingCartController {
         next_ID++;
     }
 
-
 }

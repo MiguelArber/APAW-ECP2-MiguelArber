@@ -15,7 +15,7 @@ public class ArticleResource {
 
 	    public void createArticle(String articleName) throws ArticleFieldInvalidException {
 	        this.validateField(articleName);
-	        
+	        new ArticleController().createArticle(articleName);
 	    }
 
 	    private void validateField(String field) throws ArticleFieldInvalidException {
