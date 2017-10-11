@@ -26,7 +26,7 @@ public class Dispatcher {
     	
     	 try {
              if (request.isEqualsPath(ShoppingCartResource.SHOPPING_CART)) {
-                 
+                 shoppingCartResource.createShoppingCart(request.getBody());
                  response.setStatus(HttpStatus.CREATED);
              }
     	 } catch (Exception e) {
