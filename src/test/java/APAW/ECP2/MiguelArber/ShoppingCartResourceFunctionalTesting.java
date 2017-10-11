@@ -21,5 +21,36 @@ public class ShoppingCartResourceFunctionalTesting {
     public void before() {
         DaoFactory.setFactory(new DaoMemoryFactory());
     }
+    
+    private void createShoppingCart() {
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(ShoppingCartResource.SHOPPING_CART).body("cart").build();
+        new HttpClientService().httpRequest(request);
+    }
+    
+    @Test
+    public void testCreateShoppingCart() {
+        this.createShoppingCart();
+    }
 
+    @Test(expected = HttpException.class)
+    public void testCreateShoppingCartNameEmpty() {
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(ShoppingCartResource.SHOPPING_CART).body("").build();
+        new HttpClientService().httpRequest(request);
+    }
+
+    @Test(expected = HttpException.class)
+    public void testCreateWithoutShoppingCartName() {
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(ShoppingCartResource.SHOPPING_CART).build();
+        new HttpClientService().httpRequest(request);
+    }
+
+    @Test
+    public void testReadShoppingCart() {
+        this.createShoppingCart();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(ShoppingCartResource.SHOPPING_CART).path(ShoppingCartResource.ID)
+                .expandPath("1").build();
+        assertEquals("{\"id\":1,\"name\":\"cart\"}", new HttpClientService().httpRequest(request).getBody());
+
+    }
+    
 }
