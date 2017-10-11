@@ -53,4 +53,13 @@ public class ShoppingCartResourceFunctionalTesting {
 
     }
     
+    @Test(expected = HttpException.class)
+    public void testReadShoppingCartNonExistingID() {
+        this.createShoppingCart();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(ShoppingCartResource.SHOPPING_CART).path(ShoppingCartResource.ID)
+                .expandPath("100").build();
+        new HttpClientService().httpRequest(request);
+
+    }
+    
 }
