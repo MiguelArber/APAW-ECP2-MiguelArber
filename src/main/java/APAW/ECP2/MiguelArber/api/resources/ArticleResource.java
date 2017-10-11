@@ -8,6 +8,8 @@ import APAW.ECP2.MiguelArber.api.resources.exceptions.ShoppingCartIdNotFoundExce
 import APAW.ECP2.MiguelArber.api.resources.exceptions.ArticleInvalidException;
 
 public class ArticleResource {
+	
+	 public static final String ARTICLES = "articles";
 
 	
 
