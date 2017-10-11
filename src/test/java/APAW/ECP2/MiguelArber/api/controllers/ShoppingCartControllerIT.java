@@ -14,5 +14,16 @@ public class ShoppingCartControllerIT {
 
     private ShoppingCartController shoppingCartController;
 
-
+    @Before
+    public void before() {
+        DaoFactory.setFactory(new DaoMemoryFactory());
+        shoppingCartController = new ShoppingCartController();
+    }
+    
+    @Test
+    public void testCreateAndShoppingCartList() {
+    	shoppingCartController.createShoppingCart("cart");
+        assertEquals("cart", shoppingCartController.shoppingCartList().get(0).getName());
+    }
+    
 }

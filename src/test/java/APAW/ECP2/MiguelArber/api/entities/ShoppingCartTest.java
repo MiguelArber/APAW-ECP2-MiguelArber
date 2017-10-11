@@ -52,8 +52,7 @@ public class ShoppingCartTest {
 	@Test
 	public void testDate() {
 		
-		Calendar date = Calendar.getInstance();
-		assertEquals(true, cart.getDate().before(date));
+		assertEquals(true, cart.getDate().before(Calendar.getInstance()));
 		
 	}
 	
