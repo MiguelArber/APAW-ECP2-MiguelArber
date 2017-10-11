@@ -44,4 +44,22 @@ public class ShoppingCartResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
     }
     
+    @Test
+    public void testReadShoppingCart() {
+        this.createShoppingCart();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(ShoppingCartResource.SHOPPING_CART).path(ShoppingCartResource.ID)
+                .expandPath("1").build();
+        assertEquals("{\"id\":1,\"name\":\"cart\"}", new HttpClientService().httpRequest(request).getBody());
+
+    }
+    
+    @Test(expected = HttpException.class)
+    public void testReadShoppingCartNonExistingID() {
+        this.createShoppingCart();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(ShoppingCartResource.SHOPPING_CART).path(ShoppingCartResource.ID)
+                .expandPath("100").build();
+        new HttpClientService().httpRequest(request);
+
+    }
+    
 }

@@ -20,6 +20,15 @@ public class Dispatcher {
 
     public void doGet(HttpRequest request, HttpResponse response) {
         
+    	try {
+            if (request.isEqualsPath(ShoppingCartResource.SHOPPING_CART + ShoppingCartResource.ID)) {
+            	/*response.setBody("{\"id\":1,\"name\":\"cart\"}"); for testing purposes*/
+                response.setBody(shoppingCartResource.readShoppingCart(Integer.valueOf(request.paths()[1])).toString());
+            }
+    	} catch (Exception e) {
+            responseError(response, e);
+        }
+    	
     }
 
     public void doPost(HttpRequest request, HttpResponse response) {
