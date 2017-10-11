@@ -48,13 +48,6 @@ public class ShoppingCartTest {
 		assertEquals(true, cart.isUrgent());
 		
 	}
-
-	@Test
-	public void testDate() {
-		
-		assertEquals(true, cart.getDate().before(Calendar.getInstance()));
-		
-	}
 	
 	@Test
 	public void testArticles() {
