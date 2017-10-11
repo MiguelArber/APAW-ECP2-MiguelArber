@@ -6,10 +6,14 @@ import APAW.ECP2.MiguelArber.api.daos.ArticleDao;
 
 public class DaoMemoryFactory extends DaoFactory {
 
+    private ShoppingCartDao shoppingCartDao;
+	
 	@Override
 	public ShoppingCartDao getShoppingCartDao() {
-		// TODO Auto-generated method stub
-		return null;
+        if (shoppingCartDao == null) {
+            shoppingCartDao = new ShoppingCartDaoMemory();
+        }
+        return shoppingCartDao;
 	}
 
 	@Override
