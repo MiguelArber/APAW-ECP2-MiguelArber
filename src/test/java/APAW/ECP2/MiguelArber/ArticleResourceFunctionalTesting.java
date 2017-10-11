@@ -30,8 +30,34 @@ public class ArticleResourceFunctionalTesting {
         request = new HttpRequest();
     }
    
-   @Test
-   public void test() {
-	   
+  /* private void createShoppingCart() {
+       HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(ShoppingCartResource.SHOPPING_CART).body("cart").build();
+       new HttpClientService().httpRequest(request);
+   } Lo necesitaremos para luego */
+   
+   private void createArticles() {
+       //this.createShoppingCart(); Lo necesitaremos para luego
+       HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(ArticleResource.ARTICLES).body("article").build();
+       new HttpClientService().httpRequest(request);
    }
+   
+   @Test
+   public void testCreateArticle() {
+       this.createArticles();
+   }
+   
+   @Test (expected = HttpException.class)
+   public void testCreateArticleNAmeEmpty() {
+       //this.createShoppingCart(); Lo necesitaremos para luego
+       HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(ArticleResource.ARTICLES).body("").build();
+       new HttpClientService().httpRequest(request);
+   }
+   
+   @Test (expected = HttpException.class)
+   public void testCreateArticleWithoutArticleName() {
+       //this.createShoppingCart(); Lo necesitaremos para luego
+       HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(ArticleResource.ARTICLES).build();
+       new HttpClientService().httpRequest(request);
+   }
+   
 }

@@ -28,6 +28,9 @@ public class Dispatcher {
              if (request.isEqualsPath(ShoppingCartResource.SHOPPING_CART)) {
                  shoppingCartResource.createShoppingCart(request.getBody());
                  response.setStatus(HttpStatus.CREATED);
+             } else if (request.isEqualsPath(ArticleResource.ARTICLES)) {
+            	 articleResource.createArticle(request.getBody());
+                 response.setStatus(HttpStatus.CREATED);
              }
     	 } catch (Exception e) {
              responseError(response, e);
