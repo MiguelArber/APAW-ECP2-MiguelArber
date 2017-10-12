@@ -60,8 +60,9 @@ public class Dispatcher {
     public void doDelete(HttpRequest request, HttpResponse response) {
         try {
             if (request.isEqualsPath(ShoppingCartResource.SHOPPING_CART + ShoppingCartResource.ID)) {
-            		response.setBody("{\"id\":1,\"name\":\"cart\"}");
-
+               response.setBody(shoppingCartResource.deleteShoppingCart(Integer.valueOf(request.paths()[1])).toString());
+            } else {
+                throw new RequestInvalidException(request.getPath());
             }
         } catch (Exception e) {
             responseError(response, e);

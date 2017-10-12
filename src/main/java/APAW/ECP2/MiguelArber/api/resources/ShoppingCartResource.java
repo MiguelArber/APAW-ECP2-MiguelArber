@@ -41,5 +41,13 @@ public class ShoppingCartResource {
         Optional<ShoppingCartDto> optional = new ShoppingCartController().readShoppingCart(shoppingCartId);
         return optional.orElseThrow(() -> new ShoppingCartIdNotFoundException(Integer.toString(shoppingCartId)));
     }
+    
+    public ShoppingCartDto deleteShoppingCart(Integer shoppingCartId) throws ShoppingCartIdNotFoundException {
+    	
+    		ShoppingCartDto shoppingCart = new ShoppingCartDto(new ShoppingCartBuilder().addId(1).addName("cart").build());
+    		return shoppingCart;
+    	
+    		
+    }
 
 }

@@ -65,11 +65,16 @@ public class ShoppingCartResourceFunctionalTesting {
     @Test
     public void testDeleteShoppingCart() {
     	
-    		this.createShoppingCart();
-    		HttpRequest request = new HttpRequestBuilder().method(HttpMethod.DELETE).path(ShoppingCartResource.SHOPPING_CART).path(ShoppingCartResource.ID).build();
+    		this.testCreateShoppingCart();
+    		HttpRequest request = new HttpRequestBuilder().method(HttpMethod.DELETE).path("shoppingCart/1").build();
     		assertEquals("{\"id\":1,\"name\":\"cart\"}", new HttpClientService().httpRequest(request).getBody()); //Debe devolver el carrito uno en caso de existir
     }
     
-
+    /*@Test
+    public void testDeleteWithoutShoppingCart() {
+    	
+    		HttpRequest request = new HttpRequestBuilder().method(HttpMethod.DELETE).path(ShoppingCartResource.SHOPPING_CART).path(ShoppingCartResource.ID).build();
+    		assertEquals("{}", new HttpClientService().httpRequest(request).getBody()); //Devuelve vacío
+    }*/
     
 }
