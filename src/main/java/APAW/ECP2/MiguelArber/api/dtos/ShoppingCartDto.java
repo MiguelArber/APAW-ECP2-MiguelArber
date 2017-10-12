@@ -30,7 +30,11 @@ public class ShoppingCartDto {
 
     @Override
     public String toString() {
-        return "{\"id\":" + id + ",\"name\":\"" + name + "\"}";
+    		if(name == null) {
+			return "{}";
+		} else {
+			return "{\"id\":" + id + ",\"name\":\"" + name + "\"}";
+		}
     }
 	
 	
