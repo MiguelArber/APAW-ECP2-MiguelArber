@@ -40,5 +40,13 @@ public class ShoppingCartController {
     private boolean existShoppingCartId(int shoppingCartId) {
         return DaoFactory.getFactory().getShoppingCartDao().read(shoppingCartId) != null;
     }
+    
+    public ShoppingCartDto deleteShoppingCart(int shoppingCartId) {
+    	
+		ShoppingCartDto shoppingCartDto = new ShoppingCartDto(DaoFactory.getFactory().getShoppingCartDao().read(shoppingCartId));
+		DaoFactory.getFactory().getShoppingCartDao().deleteById(shoppingCartId);
+		return shoppingCartDto;
+
+    }
 
 }
