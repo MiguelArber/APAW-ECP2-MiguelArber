@@ -62,7 +62,7 @@ public class Dispatcher {
             if (request.isEqualsPath(ShoppingCartResource.SHOPPING_CART + ShoppingCartResource.ID)) {
             		response.setBody(shoppingCartResource.deleteShoppingCart(Integer.valueOf(request.paths()[1])).toString());
             } else if (request.isEqualsPath(ArticleResource.ARTICLES + ArticleResource.ID)) {
-            		response.setBody("{\"id\":1,\"name\":\"article\"}");
+            		response.setBody(articleResource.deleteArticle(Integer.valueOf(request.paths()[1])).toString());
             } else {
                 throw new RequestInvalidException(request.getPath());
             }
