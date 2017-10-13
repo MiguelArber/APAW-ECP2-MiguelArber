@@ -6,8 +6,6 @@ import java.util.Optional;
 
 import APAW.ECP2.MiguelArber.api.daos.DaoFactory;
 import APAW.ECP2.MiguelArber.api.dtos.ArticleDto;
-import APAW.ECP2.MiguelArber.api.dtos.ShoppingCartDto;
-import APAW.ECP2.MiguelArber.api.entities.ShoppingCart;
 import APAW.ECP2.MiguelArber.api.entities.builders.ArticleBuilder;
 import APAW.ECP2.MiguelArber.api.entities.Article;
 
@@ -41,5 +39,12 @@ public class ArticleController {
         return DaoFactory.getFactory().getArticleDao().read(articleId) != null;
     }
 
+    public ArticleDto deleteArticle(int articleId) {
+    	
+		ArticleDto articleDto = new ArticleDto(DaoFactory.getFactory().getArticleDao().read(articleId));
+		DaoFactory.getFactory().getArticleDao().deleteById(articleId);
+		return articleDto;
 
+    }
+    
 }

@@ -37,4 +37,9 @@ public class ArticleResource {
 	        Optional<ArticleDto> optional = new ArticleController().readArticle(articleId);
 	        return optional.orElseThrow(() -> new ArticleIdNotFoundException(Integer.toString(articleId)));
 	    }
+	    
+	    public ArticleDto deleteArticle(Integer articleId) {
+	    	
+    		return new ArticleController().deleteArticle(articleId);
+    }
 }
