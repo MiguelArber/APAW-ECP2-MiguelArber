@@ -5,9 +5,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({
-    ShoppingCartControllerIT.class
+@SuiteClasses({ 
+    ArticleControllerIT.class
 })
-public class AllShoppingCartApiControllersTests {
+public class AllArticleApiControllersTests {
 
 }

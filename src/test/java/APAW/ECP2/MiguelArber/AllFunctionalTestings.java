@@ -9,6 +9,6 @@ import org.junit.runners.Suite.SuiteClasses;
     ShoppingCartResourceFunctionalTesting.class, 
     ArticleResourceFunctionalTesting.class
 })
-public class AllShoppingCartFunctionalTestings {
+public class AllFunctionalTestings {
 
 }

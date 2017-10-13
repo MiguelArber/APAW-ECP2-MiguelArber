@@ -6,18 +6,21 @@ import java.util.List;
 
 import APAW.ECP2.MiguelArber.api.daos.ArticleDao;
 import APAW.ECP2.MiguelArber.api.entities.Article;
+import APAW.ECP2.MiguelArber.api.entities.ShoppingCart;
 
 public class ArticleDaoMemory extends GenericDaoMemory<Article> implements ArticleDao {
 
+    public ArticleDaoMemory() {
+        this.setMap(new HashMap<Integer, Article>());
+    }
+	
 	@Override
 	protected Integer getId(Article entity) {
-		// TODO Auto-generated method stub
-		return null;
+		return entity.getID();
 	}
 
 	@Override
 	protected void setId(Article entity, Integer id) {
-		// TODO Auto-generated method stub
 		
 	}
 

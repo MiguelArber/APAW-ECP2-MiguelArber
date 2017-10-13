@@ -20,9 +20,32 @@ public class Dispatcher {
 
     public void doGet(HttpRequest request, HttpResponse response) {
         
+    	try {
+            if (request.isEqualsPath(ShoppingCartResource.SHOPPING_CART + ShoppingCartResource.ID)) {
+            	/*response.setBody("{\"id\":1,\"name\":\"cart\"}"); for testing purposes*/
+                response.setBody(shoppingCartResource.readShoppingCart(Integer.valueOf(request.paths()[1])).toString());
+            } else if (request.isEqualsPath(ArticleResource.ARTICLES + ArticleResource.ID)) {
+            	response.setBody(articleResource.readArticle(Integer.valueOf(request.paths()[1])).toString());
+            }
+    	} catch (Exception e) {
+            responseError(response, e);
+        }
+    	
     }
 
     public void doPost(HttpRequest request, HttpResponse response) {
+    	
+    	 try {
+             if (request.isEqualsPath(ShoppingCartResource.SHOPPING_CART)) {
+                 shoppingCartResource.createShoppingCart(request.getBody());
+                 response.setStatus(HttpStatus.CREATED);
+             } else if (request.isEqualsPath(ArticleResource.ARTICLES)) {
+            	 articleResource.createArticle(request.getBody());
+                 response.setStatus(HttpStatus.CREATED);
+             }
+    	 } catch (Exception e) {
+             responseError(response, e);
+         }
     		
     }
 
@@ -35,7 +58,17 @@ public class Dispatcher {
     }
 
     public void doDelete(HttpRequest request, HttpResponse response) {
-
+        try {
+            if (request.isEqualsPath(ShoppingCartResource.SHOPPING_CART + ShoppingCartResource.ID)) {
+            		response.setBody(shoppingCartResource.deleteShoppingCart(Integer.valueOf(request.paths()[1])).toString());
+            } else if (request.isEqualsPath(ArticleResource.ARTICLES + ArticleResource.ID)) {
+            		response.setBody(articleResource.deleteArticle(Integer.valueOf(request.paths()[1])).toString());
+            } else {
+                throw new RequestInvalidException(request.getPath());
+            }
+        } catch (Exception e) {
+            responseError(response, e);
+        }
     }
 
 }

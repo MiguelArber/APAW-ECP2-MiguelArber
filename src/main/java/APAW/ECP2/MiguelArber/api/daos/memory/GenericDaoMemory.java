@@ -40,8 +40,14 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, Integer> {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        map.remove(id);
+    public T deleteById(Integer id) {
+    		if(map.containsKey(id)) {
+    			T var = map.get(id);
+    			map.remove(id);
+    			return var;
+    		} else {
+    			return null;
+    		}
     }
 
     @Override

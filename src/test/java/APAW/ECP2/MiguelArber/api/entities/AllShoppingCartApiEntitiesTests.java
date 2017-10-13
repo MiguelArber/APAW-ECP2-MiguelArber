@@ -6,7 +6,8 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-    ShoppingCartTest.class
+    ShoppingCartTest.class,
+    ShoppingCartBuilderTest.class
 })
 public class AllShoppingCartApiEntitiesTests {
 
