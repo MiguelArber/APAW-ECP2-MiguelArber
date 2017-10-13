@@ -9,7 +9,6 @@ import org.junit.rules.ExpectedException;
 
 import APAW.ECP2.MiguelArber.api.daos.DaoFactory;
 import APAW.ECP2.MiguelArber.api.daos.memory.DaoMemoryFactory;
-import APAW.ECP2.MiguelArber.api.resources.ShoppingCartResource;
 import APAW.ECP2.MiguelArber.api.resources.ArticleResource;
 import APAW.ECP2.MiguelArber.http.HttpClientService;
 import APAW.ECP2.MiguelArber.http.HttpException;
@@ -30,13 +29,7 @@ public class ArticleResourceFunctionalTesting {
         request = new HttpRequest();
     }
    
-  /* private void createShoppingCart() {
-       HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(ShoppingCartResource.SHOPPING_CART).body("cart").build();
-       new HttpClientService().httpRequest(request);
-   } Lo necesitaremos para luego */
-   
    private void createArticles() {
-       //this.createShoppingCart(); Lo necesitaremos para luego
        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(ArticleResource.ARTICLES).body("article").build();
        new HttpClientService().httpRequest(request);
    }
@@ -48,14 +41,12 @@ public class ArticleResourceFunctionalTesting {
    
    @Test (expected = HttpException.class)
    public void testCreateArticleNAmeEmpty() {
-       //this.createShoppingCart(); Lo necesitaremos para luego
        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(ArticleResource.ARTICLES).body("").build();
        new HttpClientService().httpRequest(request);
    }
    
    @Test (expected = HttpException.class)
    public void testCreateArticleWithoutArticleName() {
-       //this.createShoppingCart(); Lo necesitaremos para luego
        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(ArticleResource.ARTICLES).build();
        new HttpClientService().httpRequest(request);
    }
@@ -77,5 +68,23 @@ public class ArticleResourceFunctionalTesting {
        new HttpClientService().httpRequest(request);
 
    }
+   
+   @Test
+   public void testDeleteArticle() {
+   	
+   		this.testCreateArticle();
+   		HttpRequest request = new HttpRequestBuilder().method(HttpMethod.DELETE).path(ArticleResource.ARTICLES).path(ArticleResource.ID)
+                .expandPath("1").build();
+   		assertEquals("{\"id\":1,\"name\":\"article\"}", new HttpClientService().httpRequest(request).getBody());
+   }
+   
+   /*@Test(expected = HttpException.class)
+   public void testDeleteWithoutArticle() {
+   	
+   		HttpRequest request = new HttpRequestBuilder().method(HttpMethod.DELETE).path(ArticleResource.ARTICLES).path(ArticleResource.ID)
+                .expandPath("10").build();
+   		new HttpClientService().httpRequest(request).getBody();
+   }*/
+   
    
 }
