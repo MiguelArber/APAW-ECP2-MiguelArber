@@ -78,13 +78,13 @@ public class ArticleResourceFunctionalTesting {
    		assertEquals("{\"id\":1,\"name\":\"article\"}", new HttpClientService().httpRequest(request).getBody());
    }
    
-   /*@Test(expected = HttpException.class)
+   @Test(expected = HttpException.class)
    public void testDeleteWithoutArticle() {
    	
    		HttpRequest request = new HttpRequestBuilder().method(HttpMethod.DELETE).path(ArticleResource.ARTICLES).path(ArticleResource.ID)
                 .expandPath("10").build();
    		new HttpClientService().httpRequest(request).getBody();
-   }*/
+   }
    
    
 }

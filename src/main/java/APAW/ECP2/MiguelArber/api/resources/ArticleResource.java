@@ -40,8 +40,6 @@ public class ArticleResource {
 	    
 	    public ArticleDto deleteArticle(Integer articleId) {
 	    	
-	    	ArticleDto article = new ArticleDto(new ArticleBuilder().addId(1).addReference("article").build());	
-	    	return article;
-    		
+    		return new ArticleController().deleteArticle(articleId);
     }
 }
